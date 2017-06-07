@@ -20,3 +20,6 @@ hs_err_pid*
 
 # Target files
 **/target/**
+
+# Maven Wrapper
+!maven-wrapper.jar
