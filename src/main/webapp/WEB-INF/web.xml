@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>record</servlet-name>
-        <servlet-class>com.nmuzychuk.directory.model.Record</servlet-class>
+        <servlet-class>com.nmuzychuk.directory.controller.RecordController</servlet-class>
     </servlet>
 
     <servlet-mapping>

@@ -1,28 +1,48 @@
 package com.nmuzychuk.directory.model;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+public class Record {
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
 
-public class Record extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
-        PrintWriter printWriter = resp.getWriter();
+    public int getId() {
+        return id;
+    }
 
-        String firstName = req.getParameter("firstName");
-        printWriter.println("GET record. firstName:" + firstName);
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
-        PrintWriter printWriter = resp.getWriter();
-
-        String lastName = req.getParameter("lastName");
-        printWriter.println("POST record. lastName:" + lastName);
+    public String toString() {
+        return "{id: " + getId() +
+                ", firstName: " + getFirstName() +
+                ", lastName: " + getLastName() +
+                ", phoneNumber: " + getPhoneNumber() + "}";
     }
 }
