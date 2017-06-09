@@ -6,7 +6,16 @@ import static org.junit.Assert.assertEquals;
 
 public class RecordTest {
     @Test
-    public void testRecord() {
+    public void testConstructor() {
+        final String expected = "{id: 1, firstName: John, lastName: Smith, phoneNumber: +1-234-567-8901}";
+
+        Record record = new Record(1, "John", "Smith", "+1-234-567-8901");
+
+        assertEquals(expected, record.toString());
+    }
+
+    @Test
+    public void testMethods() {
         final String expected = "{id: 1, firstName: John, lastName: Smith, phoneNumber: +1-234-567-8901}";
 
         Record record = new Record();

@@ -6,6 +6,16 @@ public class Record {
     private String lastName;
     private String phoneNumber;
 
+    public Record() {
+    }
+
+    public Record(int id, String firstName, String lastName, String phoneNumber) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+    }
+
     public int getId() {
         return id;
     }
