@@ -5,13 +5,13 @@ import com.nmuzychuk.directory.model.Record;
 import java.util.List;
 
 public interface RecordService {
-    public List<Record> getAllRecords();
+    List<Record> getAllRecords();
 
-    public Record getRecord(int id) throws Exception;
+    Record getRecord(int id) throws Exception;
 
-    public void addRecord(Record record);
+    void addRecord(Record record);
 
-    public void updateRecord(Record record) throws Exception;
+    void updateRecord(Record record) throws Exception;
 
-    public void deleteRecord(int id) throws Exception;
+    void deleteRecord(int id) throws Exception;
 }
