@@ -1,0 +1,12 @@
+language: java
+jdk:
+- oraclejdk8
+- oraclejdk7
+after_success:
+- if [[ `java -version 2>&1 | head -n 1` == *1.8.* ]]; then wget -O ~/codacy-coverage-reporter-assembly-latest.jar
+  https://github.com/codacy/codacy-coverage-reporter/releases/download/2.0.0/codacy-coverage-reporter-2.0.0-assembly.jar;
+  java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter
+  -l Java -r target/site/jacoco/jacoco.xml; fi
+env:
+  global:
+    secure: Ooh39dQ2KLo9gNHVZMxo0My+kRUVghwKKrBtFOCgeO/ZZpPrnvdVJ9tKJNR0bAGGSGS1GHtZ8OLf3xzVw8TCBYucppJrSqgZHilEFC/GkZKkKTILqNq5xXX54Gqe744GBZwsbOZ45bbBJW6bdAGwClxNksdI6fFaDiOx1qJf6pmExAEejCAVQZ74LUoFgPY4isJlOnlT9s0caD6SjVw4nTUhlBVZxpyXZw2sk9a8iYeKVXDxcZDFA0ZctEkgCpo3H7CO63DD1YIoIslrXdiFqqIVuYnsT3QgOCtysucTdppL25xbfHoXoiDxjpCV5HFVuIC8N+C4GPMNgN55/c3dvJVNYqpt7VLGXKX0fotuo9FwA252Zb5VfXujyqtdwyCDLkXQoiWEWWx4thh/TSkBrLaQ0mQfJ2auEKetv1A93VX9ImPR+c9MJNz0vxvg1ivhFEgkpjNg2N3G2lmsIBiK+g8DODMeJdYgpQekBTnzs0fB3RBZ4ocAK9nE4DLz3rdiXJgvcrbKIDS3L5PxbRTwIsxunNJdhJCqwrRdMpf9rq+PHk8UUgEZrx+Ud+6VFCBp5R6P1ls5Gz6i8HprUutGE/V2p+RDCeBoor3YF6X9Kvd7Nl+5UUR7Ypkr+fsJ+Q2ZhH74XwXVyXcvGz5h5nP/tbm7+csuMByJAMmxnJ7Jotg=
