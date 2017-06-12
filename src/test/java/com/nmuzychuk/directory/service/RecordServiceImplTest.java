@@ -5,22 +5,22 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class RecordServiceStubImplTest {
+public class RecordServiceImplTest {
     @Test
-    public void testRecordServiceStub() {
-        RecordService recordService = new RecordServiceStubImpl();
+    public void testRecordService() {
+        RecordService recordService = new RecordServiceImpl();
 
-        assertEquals("[]", recordService.toString());
+        assertEquals(0, recordService.getAllRecords().size());
 
         Record record1 = new Record(1, "First", "Last", "101");
         recordService.addRecord(record1);
 
-        assertEquals("[1]", recordService.toString());
+        assertEquals(1, recordService.getAllRecords().size());
 
         Record record2 = new Record(2, "John", "Smith", "102");
         recordService.addRecord(record2);
 
-        assertEquals("[1, 2]", recordService.toString());
+        assertEquals(2, recordService.getAllRecords().size());
 
         Record updatedRecord2 = new Record(2, "John", "Smith", "202");
 
@@ -31,10 +31,10 @@ public class RecordServiceStubImplTest {
 
         recordService.deleteRecord(1);
 
-        assertEquals("[2]", recordService.toString());
+        assertEquals(1, recordService.getAllRecords().size());
 
         recordService.deleteRecord(2);
 
-        assertEquals("[]", recordService.toString());
+        assertEquals(0, recordService.getAllRecords().size());
     }
 }

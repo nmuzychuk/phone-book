@@ -2,6 +2,7 @@ package com.nmuzychuk.directory.controller;
 
 import com.nmuzychuk.directory.model.Record;
 import com.nmuzychuk.directory.service.RecordService;
+import com.nmuzychuk.directory.service.RecordServiceImpl;
 import com.nmuzychuk.directory.service.RecordServiceStubImpl;
 
 import javax.servlet.ServletException;
@@ -12,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class RecordController extends HttpServlet {
-    private RecordService recordService = new RecordServiceStubImpl();
+    private RecordService recordService = new RecordServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -20,6 +21,7 @@ public class RecordController extends HttpServlet {
 
         String id;
         String action = req.getParameter("action");
+        Record record;
 
         if (action != null) {
             switch (action) {
@@ -28,23 +30,15 @@ public class RecordController extends HttpServlet {
                     break;
                 case "show":
                     id = req.getParameter("id");
-                    try {
-                        Record record = recordService.getRecord(Integer.parseInt(id));
-                        req.setAttribute("record", record);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    record = recordService.getRecord(Integer.parseInt(id));
+                    req.setAttribute("record", record);
 
                     req.getRequestDispatcher("record/show.jsp").forward(req, resp);
                     break;
                 case "edit":
                     id = req.getParameter("id");
-                    try {
-                        Record record = recordService.getRecord(Integer.parseInt(id));
-                        req.setAttribute("record", record);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    record = recordService.getRecord(Integer.parseInt(id));
+                    req.setAttribute("record", record);
 
                     req.getRequestDispatcher("record/edit.jsp").forward(req, resp);
                     break;
@@ -74,22 +68,13 @@ public class RecordController extends HttpServlet {
                     phoneNumber = req.getParameter("phoneNumber");
 
                     record = new Record(Integer.parseInt(id), firstName, lastName, phoneNumber);
-
-                    try {
-                        recordService.updateRecord(record);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    recordService.updateRecord(record);
 
                     resp.sendRedirect("/");
                     return;
                 case "delete":
                     id = req.getParameter("id");
-                    try {
-                        recordService.deleteRecord(Integer.parseInt(id));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    recordService.deleteRecord(Integer.parseInt(id));
 
                     resp.sendRedirect("/");
                     return;

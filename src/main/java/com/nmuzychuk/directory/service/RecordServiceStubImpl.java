@@ -14,14 +14,16 @@ public class RecordServiceStubImpl implements RecordService {
     }
 
     @Override
-    public Record getRecord(int id) throws Exception {
-        for (Record record : recordList) {
-            if (record.getId() == id) {
-                return record;
+    public Record getRecord(int id) {
+        Record record = null;
+
+        for (Record r : recordList) {
+            if (r.getId() == id) {
+                record = r;
             }
         }
 
-        throw new Exception("Record " + id + " is not found");
+        return record;
     }
 
     @Override
@@ -30,7 +32,7 @@ public class RecordServiceStubImpl implements RecordService {
     }
 
     @Override
-    public void updateRecord(Record record) throws Exception {
+    public void updateRecord(Record record) {
         for (Record r : recordList) {
             if (r.getId() == record.getId()) {
                 r.setFirstName(record.getFirstName());
@@ -39,20 +41,16 @@ public class RecordServiceStubImpl implements RecordService {
                 return;
             }
         }
-
-        throw new Exception("Record " + record.getId() + " is not found");
     }
 
     @Override
-    public void deleteRecord(int id) throws Exception {
-        for (Record record : recordList) {
-            if (record.getId() == id) {
-                recordList.remove(record);
+    public void deleteRecord(int id) {
+        for (Record r : recordList) {
+            if (r.getId() == id) {
+                recordList.remove(r);
                 return;
             }
         }
-
-        throw new Exception("Record " + id + " is not found");
     }
 
     @Override

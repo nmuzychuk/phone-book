@@ -7,11 +7,11 @@ import java.util.List;
 public interface RecordService {
     List<Record> getAllRecords();
 
-    Record getRecord(int id) throws Exception;
+    Record getRecord(int id);
 
     void addRecord(Record record);
 
-    void updateRecord(Record record) throws Exception;
+    void updateRecord(Record record);
 
-    void deleteRecord(int id) throws Exception;
+    void deleteRecord(int id);
 }
