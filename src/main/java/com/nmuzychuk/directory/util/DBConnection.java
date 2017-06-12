@@ -1,14 +1,14 @@
 package com.nmuzychuk.directory.util;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class DbUtil {
+public class DBConnection {
     private static Connection connection = null;
 
     public static Connection getConnection() {
@@ -17,7 +17,7 @@ public class DbUtil {
         } else {
             try {
                 Properties properties = new Properties();
-                InputStream inputStream = new FileInputStream("src/db.properties");
+                InputStream inputStream = DBConnection.class.getClassLoader().getResourceAsStream("db.properties");
                 properties.load(inputStream);
 
                 String driver = properties.getProperty("driver");
@@ -27,11 +27,19 @@ public class DbUtil {
 
                 Class.forName(driver);
                 connection = DriverManager.getConnection(url, user, password);
+
+                createTable(connection);
             } catch (IOException | ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
             }
         }
 
         return connection;
+    }
+
+    private static void createTable(Connection connection) throws SQLException {
+        String query = "CREATE TABLE records (id INT PRIMARY KEY, firstName VARCHAR (64), lastName VARCHAR (64), phoneNumber VARCHAR (64))";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.execute();
     }
 }
