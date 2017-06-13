@@ -3,7 +3,7 @@ package com.nmuzychuk.directory.controller;
 import com.nmuzychuk.directory.model.Record;
 import com.nmuzychuk.directory.service.RecordService;
 import com.nmuzychuk.directory.service.RecordServiceImpl;
-import com.nmuzychuk.directory.service.RecordServiceStubImpl;
+//import com.nmuzychuk.directory.service.RecordServiceStubImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -42,6 +42,8 @@ public class RecordController extends HttpServlet {
 
                     req.getRequestDispatcher("record/edit.jsp").forward(req, resp);
                     break;
+                default:
+                    resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Undefined action " + action);
             }
         } else {
             List<Record> recordList = recordService.getAllRecords();
@@ -55,7 +57,11 @@ public class RecordController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
 
-        String id, firstName, lastName, phoneNumber;
+        String id;
+        String firstName;
+        String lastName;
+        String phoneNumber;
+
         String method = req.getParameter("_method");
         Record record;
 
@@ -78,11 +84,19 @@ public class RecordController extends HttpServlet {
 
                     resp.sendRedirect("/");
                     return;
-
+                default:
+                    resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Undefined method " + method);
+                    return;
             }
         }
 
         id = req.getParameter("id");
+
+        if (id == null || id.isEmpty()) {
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID auto increment is not supported");
+            return;
+        }
+
         firstName = req.getParameter("firstName");
         lastName = req.getParameter("lastName");
         phoneNumber = req.getParameter("phoneNumber");

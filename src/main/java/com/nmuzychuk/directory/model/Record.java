@@ -9,6 +9,7 @@ public class Record {
     public Record() {
     }
 
+    // FIXME: Rely on auto increment
     public Record(int id, String firstName, String lastName, String phoneNumber) {
         this.id = id;
         this.firstName = firstName;

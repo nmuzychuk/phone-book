@@ -10,7 +10,7 @@ public class RecordServiceStubImplTest {
     public void testRecordServiceStub() {
         RecordService recordService = new RecordServiceStubImpl();
 
-        assertEquals("[]", recordService.toString());
+        assertEquals("[]", recordService.getAllRecords().toString());
 
         Record record1 = new Record(1, "First", "Last", "101");
         recordService.addRecord(record1);
