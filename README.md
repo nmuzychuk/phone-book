@@ -6,6 +6,11 @@
 ## Overview
 A simple telephone directory built with Servlet API, JSP and JDBC
 
+## Vagrant
+```
+./mvnw jetty:run
+```
+
 ## Test
 Run JUnit tests
 ```

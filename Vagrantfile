@@ -67,7 +67,5 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
     apt-get install -y default-jdk
-
-    cd /vagrant && ./mvnw compile
   SHELL
 end
