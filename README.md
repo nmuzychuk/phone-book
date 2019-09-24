@@ -6,15 +6,15 @@
 ## Overview
 A simple telephone directory built with Servlet API, JSP and JDBC
 
+## Run
+```
+./mvnw jetty:run
+```
+
 ## Docker
 ```
 docker build -t phone-book .
 docker run -p 8080:8080 phone-book
-```
-
-## Vagrant
-```
-./mvnw jetty:run
 ```
 
 ## Test
