@@ -1,5 +1,5 @@
 # Phone Book
-[![Build Status](https://travis-ci.org/nmuzychuk/phone-book.svg?branch=master)](https://travis-ci.org/nmuzychuk/phone-book)
+[![Java CI with Maven](https://github.com/nmuzychuk/phone-book/actions/workflows/maven.yml/badge.svg)](https://github.com/nmuzychuk/phone-book/actions/workflows/maven.yml)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a436f52fdccc454bb08e0a5e07c6260a)](https://www.codacy.com/app/nmuzychuk/phone-book)
 [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/a436f52fdccc454bb08e0a5e07c6260a)](https://www.codacy.com/app/nmuzychuk/phone-book)
 
